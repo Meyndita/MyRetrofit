@@ -18,7 +18,7 @@ public class Post extends AbstractItem<Post, Post.ViewHolder> {
     private String jenis_kelamin;
     private String no_telp;
 
-    //ditambahkan konstruktor untuk menambahkan data yang didapat dari rest server ke recyclerview
+    //tambahkan konstruktor untuk menambahkan data yang didapat dari rest server ke recyclerview
     public Post(String id_siswa, String nama, String alamat, String jenis_kelamin, String no_telp) {
         this.id_siswa = id_siswa;
         this.nama = nama;

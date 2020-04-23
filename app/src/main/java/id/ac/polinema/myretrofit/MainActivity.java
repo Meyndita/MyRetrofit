@@ -1,14 +1,14 @@
 package id.ac.polinema.myretrofit;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         //kode berikut digunakan untuk menginstansiasi retrofit pada base url
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://rifaldidwi.000webhostapp.com/api/")
+                .baseUrl("https://meyndita.000webhostapp.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-                //ini adalah pengkondisian jika ada respon namun responya bukan 200 (sukses)
+                //ini adalah pengkondisian jika ada respon namun responya bukan true (sukses)
                 if (!response.isSuccessful()) {
                     textViewResult.setText("Code " + response.code());
                     return;
@@ -82,13 +82,11 @@ public class MainActivity extends AppCompatActivity {
                 textViewResult.setText(t.getMessage());
             }
         });
-
-
     }
 
     //kode untuk berpindah ke halaman tambah data siswa
     public void myOnClick(View view) {
-        Intent intent = new Intent(getApplicationContext(), FormActivity.class);
+        Intent intent = new Intent(getApplicationContext(), SendActivity.class);
         startActivity(intent);
     }
 }

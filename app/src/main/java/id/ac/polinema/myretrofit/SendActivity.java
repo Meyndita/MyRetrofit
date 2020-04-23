@@ -1,7 +1,5 @@
 package id.ac.polinema.myretrofit;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,10 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.app.AppCompatActivity;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -22,7 +19,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class FormActivity extends AppCompatActivity {
+public class SendActivity extends AppCompatActivity {
     private EditText inputNama, inputAlamat, inputTelp;
     private RadioGroup radioGroup;
 
@@ -31,6 +28,7 @@ public class FormActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
 
+        // tambahkan pengaturan button
         Button btn = findViewById(R.id.btn_tambah);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +37,7 @@ public class FormActivity extends AppCompatActivity {
                 inputAlamat = findViewById(R.id.edt_alamat);
                 inputTelp = findViewById(R.id.edt_telp);
 
-                //ini variabel untuk menyimpan data yang didapat dari form-nya
+                //variabel untuk menyimpan data yang didapat dari form tambah data
                 String nama = inputNama.getText().toString();
                 String alamat = inputAlamat.getText().toString();
                 radioGroup = findViewById(R.id.group_jk);
@@ -53,7 +51,7 @@ public class FormActivity extends AppCompatActivity {
                 } else {
                     //jika tidak kosong, maka retrofit akan diinstansiasi ke base url
                     Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl("http://rifaldidwi.000webhostapp.com/api/")
+                            .baseUrl("https://meyndita.000webhostapp.com/api/")
                             .addConverterFactory(GsonConverterFactory.create())
                             .build();
 
@@ -71,6 +69,7 @@ public class FormActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                             if (response.isSuccessful()) {
+                                // jika request succes maka akan menuju MainActivity untuk ditampilkan datanya menggunakan intent
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
                             }
@@ -85,5 +84,4 @@ public class FormActivity extends AppCompatActivity {
             }
         });
     }
-
 }

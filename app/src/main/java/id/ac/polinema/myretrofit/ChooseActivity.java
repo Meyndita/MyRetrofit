@@ -1,20 +1,19 @@
 package id.ac.polinema.myretrofit;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
 
-public class SelectActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ChooseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select);
+        setContentView(R.layout.activity_choose);
 
         Button btnViewById = findViewById(R.id.viewById);
         Button btnViewAll = findViewById(R.id.viewAll);
